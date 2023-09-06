@@ -1,0 +1,2 @@
+# Pathfinding
+Simple pathfinding algorithm
