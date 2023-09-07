@@ -30,7 +30,9 @@ namespace Pathfinding {
             Tile current=endTile;
             tiles.Add(current);
             while(true){
-                
+                if(current.parent==null){
+                    throw new NullReferenceException();
+                }
                 current=current.parent;
                 tiles.Add(current);
                 if(current.x==startX&&current.y==startY){
@@ -74,7 +76,7 @@ namespace Pathfinding {
             return visited.FindAll(a => a.x==tile.x&&a.y==tile.y).Count>0;
         }
 
-        public Tile[] FindPath(){
+        public Tile[]? FindPath(){
             List<Tile> visited=new List<Tile>();
 
             visited.Add(new Tile(startX,startY));
