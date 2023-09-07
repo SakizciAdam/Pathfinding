@@ -16,9 +16,10 @@ namespace Pathfinding {
         }
 
         public List<Tile> wallLocations=new List<Tile>();
-
+       
         public void AddWall(int x,int y){
             wallLocations.Add(new Tile(x,y));
+
         }
 
         public bool IsEnd(Tile tile){
@@ -68,11 +69,11 @@ namespace Pathfinding {
             Console.WriteLine();
         }
 
-        private bool IsVisited(List<Tile> visited,int x,int y){
+        public bool IsVisited(List<Tile> visited,int x,int y){
             return visited.FindAll(a => a.x==x&a.y==y).Count>0;
         }
 
-        private bool IsVisited(List<Tile> visited,Tile tile){
+        public bool IsVisited(List<Tile> visited,Tile tile){
             return visited.FindAll(a => a.x==tile.x&&a.y==tile.y).Count>0;
         }
 
@@ -82,16 +83,14 @@ namespace Pathfinding {
             visited.Add(new Tile(startX,startY));
             for(int i=0;i<visited.Count;i++){
                 Tile current=visited[i];
-                foreach(Tile tile in current.GetNeighbors(this)){
-                  
-                    if(!IsVisited(visited,tile)){
-                  
-                        if(IsEnd(tile)){
+                
+                foreach(Tile tile in current.GetNeighbors(this,visited)){
+                    
+                    if(IsEnd(tile)){
                             
-                            return RetracePath(tile);
-                        }
-                        visited.Add(tile);
+                        return RetracePath(tile);
                     }
+                    visited.Add(tile);
                 }
            
                 

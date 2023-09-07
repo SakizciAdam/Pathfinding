@@ -21,12 +21,13 @@ namespace Pathfinding {
             return new int[]{x,y};
         }
 
-        public List<Tile> GetNeighbors(Pathfinder ph){
+        public List<Tile> GetNeighbors(Pathfinder ph,List<Tile> visitedTiles){
             List<Tile> tiles=new List<Tile>();
+   
             for(int a=-1;a<2;a++){
                 for(int b=-1;b<2;b++){
                     if(Math.Abs(a)+Math.Abs(b)==1){
-                        if(ph.IsValid(a+x,b+y)){
+                        if(ph.IsValid(a+x,b+y)&&!ph.IsVisited(visitedTiles,a+x,b+y)){
                             tiles.Add(new Tile(this,a+x,b+y));
                         }
                     }
