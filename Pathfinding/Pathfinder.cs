@@ -28,7 +28,7 @@ namespace Pathfinding {
         private Tile[] RetracePath(Tile endTile){
             List<Tile> tiles=new List<Tile>();
             Tile current=endTile;
-            
+            tiles.Add(current);
             while(true){
                 
                 current=current.parent;
@@ -37,7 +37,7 @@ namespace Pathfinding {
                     break;
                 }
             }
-         
+            tiles.Reverse();
             return tiles.ToArray();
         }
 
