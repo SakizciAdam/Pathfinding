@@ -17,6 +17,10 @@ namespace Pathfinding {
             this.parent=parent;
         }
 
+        public int[] ConvertToIntArray(){
+            return new int[]{x,y};
+        }
+
         public List<Tile> GetNeighbors(Pathfinder ph){
             List<Tile> tiles=new List<Tile>();
             for(int a=-1;a<2;a++){
