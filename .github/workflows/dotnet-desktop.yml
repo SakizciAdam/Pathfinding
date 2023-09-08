@@ -25,6 +25,5 @@ jobs:
         run: |
             dotnet build --configuration Release --no-restore Pathfinding/Pathfinding.csproj
             dotnet build --configuration Release --no-restore Pathfinding.Tests/Pathfinding.Tests.csproj
-            dotnet build --configuration Release --no-restore Examples/Examples.csproj
       - name: Test
         run: dotnet test --no-restore --verbosity normal Pathfinding.Tests/Pathfinding.Tests.csproj
