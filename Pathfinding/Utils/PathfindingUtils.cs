@@ -31,10 +31,9 @@ namespace Pathfinding.Utils {
                         } else {
                             c='O';
                         }
-                    } else if(!pathfinder.IsValid(x,y)){
+                    } else if(pathfinder.IsWall(x,y)){
                         c='W';
                     }
-
                     Console.Write(c);
                 }
                 Console.WriteLine();
