@@ -17,28 +17,43 @@ namespace Pathfinding.Utils {
         }
 
         
+        public static string PathToString(Pathfinder pathfinder, char error = 'E', char visited = 'O', char wall = 'W', char def = '.')
+        {
+            string s = "";
 
+            for (int y = 0; y < pathfinder.height; y++)
+            {
+                for (int x = 0; x < pathfinder.width; x++)
+                {
+                    char c = def;
+
+                    if (pathfinder.IsVisited(x, y))
+                    {
+                        if (!pathfinder.IsValid(x, y))
+                        {
+                            c = error;
+                        }
+                        else
+                        {
+                            c = visited;
+                        }
+                    }
+                    else if (pathfinder.IsWall(x, y))
+                    {
+                        c = wall;
+                    }
+                    s+= c;  
+                }
+                s+= "\n";
+            }
+            return s;
+      
+        }
         
       
-        public static void PrintPath(Pathfinder pathfinder){
-            for(int y=0;y<pathfinder.height;y++){
-                for(int x=0;x<pathfinder.width;x++){
-                    char c='.';
-
-                    if(pathfinder.IsVisited(x,y)){
-                        if(!pathfinder.IsValid(x,y)){
-                            c='E';
-                        } else {
-                            c='O';
-                        }
-                    } else if(pathfinder.IsWall(x,y)){
-                        c='W';
-                    }
-                    Console.Write(c);
-                }
-                Console.WriteLine();
-            }
-            Console.WriteLine();
+        public static void PrintPath(Pathfinder pathfinder,char error='E',char visited='O',char wall='W',char def='.'){
+            
+            Console.Write(PathToString(pathfinder,error,visited,wall,def));
         }
     }
 }
