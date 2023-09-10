@@ -17,11 +17,22 @@ namespace Pathfinding {
             this.endY=endY;
         }
 
-        public List<Wall> wallLocations=new List<Wall>();
+        private List<Wall> wallLocations=new List<Wall>();
        
         public void AddWall(int x,int y,int dist=0){
             wallLocations.Add(new Wall(x,y,dist));
 
+        }
+
+        public void ClearWalls()
+        {
+            wallLocations.Clear();
+        }
+
+        public void Reset()
+        {
+            ClearWalls();
+            Clear();
         }
 
         public bool IsEnd(Tile tile){
